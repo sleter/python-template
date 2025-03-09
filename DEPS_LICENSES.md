@@ -8,4 +8,18 @@
 
 PROPRIETARY LICENSE
 
-No packages
+## Packages
+
+Find a list of packages below
+
+|Compatible|Package|
+|:--|:--|
+|✔|loguru|
+
+### loguru-0.7.3
+
+- HomePage: UNKNOWN
+- Author: UNKNOWN
+- License: MIT LICENSE
+- Compatible: True
+
