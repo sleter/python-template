@@ -1,0 +1,55 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      - id: check-case-conflict
+      - id: check-merge-conflict
+      - id: trailing-whitespace
+      - id: check-ast
+      - id: check-added-large-files
+      - id: check-toml
+      - id: check-json
+      - id: check-yaml
+
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.9.9
+    hooks:
+      - id: ruff
+        types_or: [ python, pyi ]
+        args: [ --fix-only ]
+      - id: ruff-format
+        types_or: [ python, pyi ]
+
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: v1.15.0
+    hooks:
+      - id: mypy
+        args: []
+        additional_dependencies:
+          [
+            "types-PyYAML",
+            "types-aiofiles",
+            "types-setuptools",
+            "types-Deprecated",
+          ]
+        exclude: (/test_|tests/)
+
+  - repo: https://github.com/hadialqattan/pycln
+    rev: v2.5.0
+    hooks:
+      - id: pycln
+        args: ["-a"]
+
+  - repo: https://github.com/Lucas-C/pre-commit-hooks-bandit
+    rev: v1.0.6
+    hooks:
+      - id: python-bandit-vulnerability-check
+        args: [--recursive, clumper]
+
+  - repo: local
+    hooks:
+      - id: licensecheck
+        name: licensecheck
+        entry: bash -c "uv run licensecheck"
+        language: system
+        files: pyproject\.toml$

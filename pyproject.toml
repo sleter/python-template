@@ -1,0 +1,32 @@
+[project]
+name = "project"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+license = "PROPRIETARY"
+dependencies = []
+
+[dependency-groups]
+dev = [
+    "licensecheck>=2024.3",
+    "pre-commit>=4.1.0",
+    "pytest>=8.3.5",
+]
+
+[tool.mypy]
+warn_unused_configs = true
+ignore_missing_imports = true
+warn_unused_ignores = false
+show_error_codes = true
+check_untyped_defs = true
+no_implicit_optional = true
+mypy_path = ['.']
+
+[tool.licensecheck]
+using = "PEP631"
+format = "markdown"
+file = "DEPS_LICENSES.md"
+ignore_packages = []
+zero = true
+hide_output_parameters=["size"]
