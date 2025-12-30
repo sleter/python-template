@@ -39,7 +39,8 @@ def test_dockerfile_builds_and_runs_successfully() -> None:
         # Run the container and capture output
         run_result = subprocess.run(
             ["docker", "run", "--name", container_name, "--rm", image_name],
-            check=False, capture_output=True,
+            check=False,
+            capture_output=True,
             text=True,
             timeout=30,
         )
@@ -54,14 +55,16 @@ def test_dockerfile_builds_and_runs_successfully() -> None:
         # Cleanup: Remove the container if it exists (in case it wasn't removed)
         subprocess.run(
             ["docker", "rm", "-f", container_name],
-            check=False, capture_output=True,
+            check=False,
+            capture_output=True,
             timeout=10,
         )
 
         # Cleanup: Remove the image
         subprocess.run(
             ["docker", "rmi", "-f", image_name],
-            check=False, capture_output=True,
+            check=False,
+            capture_output=True,
             timeout=30,
         )
 
@@ -108,7 +111,8 @@ def test_dockerfile_uses_correct_environment_variables() -> None:
                 "-c",
                 "echo $LOGURU_LEVEL",
             ],
-            check=False, capture_output=True,
+            check=False,
+            capture_output=True,
             text=True,
             timeout=30,
         )
@@ -120,13 +124,15 @@ def test_dockerfile_uses_correct_environment_variables() -> None:
         # Cleanup: Remove the container if it exists
         subprocess.run(
             ["docker", "rm", "-f", container_name],
-            check=False, capture_output=True,
+            check=False,
+            capture_output=True,
             timeout=10,
         )
 
         # Cleanup: Remove the image
         subprocess.run(
             ["docker", "rmi", "-f", image_name],
-            check=False, capture_output=True,
+            check=False,
+            capture_output=True,
             timeout=30,
         )
