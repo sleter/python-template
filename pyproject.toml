@@ -19,6 +19,7 @@ dev = [
     "pytest>=9.0.2",
     "pytest-mock>=3.15.1",
     "ruff>=0.14.10",
+    "rust-just>=1.45.0",
     "ty>=0.0.8",
 ]
 

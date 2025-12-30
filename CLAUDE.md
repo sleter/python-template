@@ -8,6 +8,27 @@ This is a Python project using UV for dependency management. The project require
 
 ## Essential Commands
 
+### Task Runner (Just)
+
+The project uses [Just](https://github.com/casey/just) as a command runner for common tasks. Just provides a convenient way to run project commands and is especially useful in CI/CD pipelines.
+
+**Installation:**
+
+Just is included as a dev dependency (`rust-just` package) and will be automatically installed when you run `uv sync --dev`. No separate installation needed!
+
+**Usage:**
+- **List all commands**: `just` or `just --list`
+- **Run tests**: `just test` (all), `just test-unit` (unit only), `just test-integration` (integration only)
+- **Run quality checks**: `just check` (runs lint, type-check, and test)
+- **Format and lint**: `just format`, `just lint`, `just lint-fix`
+- **Type check**: `just type-check`
+- **Install dependencies**: `just install`
+- **Clean artifacts**: `just clean`
+- **Run project**: `just run`
+- **Docker**: `just docker-build`, `just docker-run`, `just docker` (build + run)
+
+All Just commands are defined in the `justfile` at the project root. You can also use the UV commands directly (see below) if you prefer.
+
 ### Dependency Management
 - **Install dependencies**: `uv sync`
 - **Install with dev dependencies**: `uv sync --dev` (dev dependencies are in the `dev` dependency group)
@@ -81,9 +102,6 @@ This is a Python project using UV for dependency management. The project require
   - `__main__.py`: Entry point containing the `main()` function (works with both run methods)
   - `__init__.py`: Package initialization (version info, etc.)
   - `config.py`: Configuration management (nearly empty placeholder)
-- `configs/`: TOML configuration files
-  - `default_config.toml`: Default configuration values
-  - `custom_config.toml`: Custom configuration overrides
 - `tests/`: Test suite
   - `unit/`: Unit tests
   - `integration/`: Integration tests
