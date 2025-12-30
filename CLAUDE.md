@@ -26,6 +26,7 @@ Just is included as a dev dependency (`rust-just` package) and will be automatic
 - **Clean artifacts**: `just clean`
 - **Run project**: `just run`
 - **Docker**: `just docker-build`, `just docker-run`, `just docker` (build + run)
+- **Documentation**: `just docs-build`, `just docs-serve`, `just docs-clean`
 
 All Just commands are defined in the `justfile` at the project root. You can also use the UV commands directly (see below) if you prefer.
 
@@ -94,6 +95,27 @@ All Just commands are defined in the `justfile` at the project root. You can als
 - **Format code**: `uv run ruff format .`
 - **Lint code**: `uv run ruff check . --fix`
 - **Check licenses**: `uv run licensecheck`
+
+### Documentation
+The project uses [MkDocs](https://www.mkdocs.org/) with the Material theme for documentation generation. Documentation is auto-generated from source code docstrings using mkdocstrings.
+
+**Commands:**
+- **Build documentation**: `just docs-build` or `uv run mkdocs build`
+- **Serve documentation locally**: `just docs-serve` or `uv run mkdocs serve` (with live reload at http://127.0.0.1:8000)
+- **Clean generated docs**: `just docs-clean`
+
+**Structure:**
+- `docs/`: Source markdown files for documentation
+  - `index.md`: Main documentation page
+  - `api/`: Auto-generated API reference from docstrings
+- `site/`: Generated HTML documentation (not committed to git)
+- `mkdocs.yml`: MkDocs configuration file
+
+**Writing Documentation:**
+- Edit markdown files in the `docs/` directory
+- Use Google-style docstrings in Python code for API documentation
+- The mkdocstrings plugin automatically generates API docs from docstrings
+- Run `just docs-serve` to preview changes with live reload
 
 ## Architecture
 

@@ -76,3 +76,15 @@ docker-run:
 
 # Build and run Docker
 docker: docker-build docker-run
+
+# Build documentation
+docs-build:
+    uv run mkdocs build
+
+# Serve documentation locally with auto-reload
+docs-serve:
+    uv run mkdocs serve
+
+# Clean generated documentation
+docs-clean:
+    rm -rf site/
