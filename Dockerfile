@@ -1,8 +1,8 @@
-FROM python:3.12-slim-bullseye
+FROM python:3.13-slim-bullseye
 COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
 
 COPY src /app/src
-COPY uv.lock pyproject.toml /app/
+COPY uv.lock pyproject.toml README.md /app/
 
 WORKDIR /app
 
@@ -12,7 +12,4 @@ RUN apt-get update && \
 
 
 ENV LOGURU_LEVEL="INFO"
-CMD [ \
-    "uv", "run", \
-    "python", "src/main.py" \
-]
+CMD [ "uv", "run", "project" ]
